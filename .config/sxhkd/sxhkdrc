@@ -1,0 +1,74 @@
+#Auxiliar
+super+Return
+	st
+super+d
+	dmenu_run
+super+b
+	dmenu_bw
+super + z
+    pkill -usr1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
+
+#Printscreen
+@Print
+	scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
+shift+Print
+	scrot -q 100 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
+ctrl+Print
+	scrot -s /tmp/screenshot-$(date +%F_%T).png | echo -n "/tmp/screenshot-$(date +%F_%T).png" | xclip -selection c
+	
+#Paste primary clipboard
+F9
+        xvkbd -no-jump-pointer -xsendevent -text "\D1`xclip -out -selection primary`" 2>/dev/null
+
+#Applications
+super+shift+w
+	firefox
+super+shift+s
+	steam
+super+shift+f
+	st -e ranger
+super+shift+m
+	st -e ncmpcpp
+super+ctrl+m
+        st -e ranger /home/yuregsf/media/Mangás
+super+shift+n
+	st -e newsboat
+super+shift+t
+	telegram-desktop
+super+shift+z
+	zathura
+super+shift+v
+	st -e nvim -c VimwikiIndex
+#super+shift+p
+#	LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
+super+shift+p
+        spotify
+super+shift+d
+	discord --no-sandbox
+super+x
+        st -e pulsemixer
+super+c
+        st -e calcurse
+super+shift+a
+        anki
+super+shift+c
+        code
+super+a
+        sxiv $HOME/Documentos/planejamento.png
+super+ctrl+s
+        slack
+
+
+#Audio
+super+period
+	pulsemixer --change-volume +5
+super+comma
+	pulsemixer --change-volume -5
+super+m
+	pulsemixer --toggle-mute
+#super+b
+#	changeaudio speaker
+#super+n
+#	changeaudio headphone
+super+p
+	mpc toggle

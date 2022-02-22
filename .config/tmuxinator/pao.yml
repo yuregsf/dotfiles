@@ -1,0 +1,16 @@
+# /home/yuregsf/.config/tmuxinator/pao.yml
+
+name: pao
+root: ~/Documentos/dev/pao-na-caixa
+pre_window: sudo pg
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim .
+  - backend:
+      layout: main-vertical
+      panes:
+        - yarn start:dev
+  - terminal:
+      layout: main-vertical

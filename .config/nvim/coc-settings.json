@@ -1,0 +1,8 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown"],
+  "eslint.format.enable": true,
+  "tsserver.formantOnSave": false,
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.autoFixOnSave": false,
+  "prettier.disableSuccessMessage": true
+}
