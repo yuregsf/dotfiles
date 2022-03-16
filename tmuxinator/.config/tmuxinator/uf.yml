@@ -1,16 +1,15 @@
-# /home/yuregsf/.config/tmuxinator/pao.yml
+# /home/yuregsf/.config/tmuxinator/uf.yml
 
-name: pao
-root: ~/Documentos/dev/pao-na-caixa
-pre_window: sudo pg
+name: uf
+root: ~/dev/urbano-norte/apps/franchisee/web
 windows:
   - editor:
       layout: main-vertical
       panes:
         - nvim .
-  - backend:
+  - frontend:
       layout: main-vertical
       panes:
-        - yarn start:dev
+        - yarn dev
   - terminal:
       layout: main-vertical
