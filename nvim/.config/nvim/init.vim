@@ -7,14 +7,6 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 set softtabstop=2
 set shiftwidth=2
-" plugin graveyard
-"Plug 'pangloss/vim-javascript'
-"Plug 'leafgarland/typescript-vim'
-"Plug 'maxmellon/vim-jsx-pretty'
-"Plug 'peitalin/vim-jsx-typescript'
-"Plug 'posva/vim-vue'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'ctrlpvim/ctrlp.vim'
 
 " Plugins =====================================================
 call plug#begin(stdpath('data') . '/plugged')
@@ -34,19 +26,21 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Plug 'tpope/vim-commentary'
 Plug 'liuchengxu/vim-which-key'
 Plug 'akinsho/flutter-tools.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ahmedkhalf/jupyter-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'hrsh7th/nvim-compe'
-" Plug 'hrsh7th/nvim-cmp'
-" Plug 'hrsh7th/cmp-buffer'
-" Plug 'hrsh7th/cmp-path'
-" Plug 'hrsh7th/cmp-nvim-lua'
-" Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'dstein64/vim-startuptime'
+Plug 'lewis6991/impatient.nvim'
+Plug 'L3MON4D3/LuaSnip'
 call plug#end()
+
+lua require'impatient'.enable_profile()
+lua require'yuregsf'
 
 
 " Basics ======================================================
@@ -54,9 +48,6 @@ call plug#end()
 " autocmd
 autocmd FileType tex,md set spell
 autocmd FileType tex,md set spelllang=pt,en
-"autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-"autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-"autocmd BufEnter *.{js,jsx,ts,tsx} :LspStart tsserver
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 let mapleader = " "
 
@@ -74,16 +65,12 @@ set nocompatible
 set nohlsearch
 set mouse=a
 set completeopt=menuone,noinsert,noselect
-"let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " Colorscheme
 set termguicolors
 set background=dark
 colorscheme gruvbox
 
-" ctrlp ====================================================
-"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
-"let g:ctrlp_working_path_mode = 'wa'
 " NERDTree ====================================================
 map <C-b> :NERDTreeToggle <CR>
 map <leader>b :NERDTreeFind<cr>
@@ -121,108 +108,6 @@ inoremap <C-j> <esc>:m .+1<CR>==
 inoremap <C-k> <esc>:m .-2<CR>==
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
-
-" Coc keybindings ==============================================
-"nmap <F3> :CocSearch 
-"nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-"nmap <F2> <Plug>(coc-rename)
-
-" TAB trigger completion
-"inoremap <silent><expr> <TAB>
-"	\ pumvisible() ? "\<C-n>" :
-"	\ <SID>check_back_space() ? "\<TAB>" :
-"	\ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-"function! s:check_back_space() abort
-"	let col = col('.') - 1
-"	return !col || getline('.')[col -1] =~# '\s'
-"endfunction
-
-" Load extensions
-"let g:coc_global_extensions = [
-"  \ 'coc-tsserver'
-"  \ ]
-
-" conditional linting
-"if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-"  let g:coc_global_extensions += ['coc-prettier']
-"endif
-"
-"if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-"  let g:coc_global_extensions += ['coc-eslint']
-"endif
-
-" ctrl+spce trigger completion
-"inoremap <silent><expr> <c-space> coc#refresh()
-
-"GoTo navigation
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-"nmap <silent> gne :call CocAction("diagnosticNext")<CR>
-"nmap <silent> gpe :call CocAction("diagnosticPrevious")<CR>
-
-" doc on hover
-"nnoremap <silent> K :call CocAction('doHover')<CR>
-
-" diagnostics
-"nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
-
-"code action
-"nmap <leader>do <Plug>(coc-codeaction)
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-"if exists('*complete_info')
-"  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-"else
-"  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"endif
-
-"Prettier
-"command! -nargs=0 Prettier :CocCommand prettier.formatFile
-"vmap <leader>f :CocCommand prettier.formatFile
-"nmap <leader>f :CocCommand prettier.formatFile
-
-" treesitter ==================================================
-lua << EOF
-require'nvim-treesitter.configs'.setup{
-  highlight = {
-    enable = true
-    }
-}
-EOF
-
-
-" native-lsp ==================================================
-lua << EOF
-local lspconfig = require'lspconfig'
-lspconfig.tsserver.setup{
-  root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", "tsconfig.json", "jsconfig.json", ".git"),
-
-  init_options = {
-    plugins = {
-      {
-          name = 'typescript-styled-plugin',
-          location = '/lib/node_modules/typescript-styled-plugin'
-        }
-      }
-    }
-}
-
-require('lspconfig').clangd.setup{}
-require('lspconfig').pyright.setup{}
-require('lspconfig').tailwindcss.setup{}
-require('flutter-tools').setup{
-  widget_guides = {
-  enabled = true,
-    }
-}
-EOF
-
 
 nnoremap <silent> gD :lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
@@ -279,14 +164,6 @@ let g:user_emmet_settings = {
 
 autocmd FileType html,css,scss,typescriptreact,vue,javascript,markdown.mdx imap <silent><buffer><expr><tab> <sid>expand_html_tab()
 
-" nvim-completion =============================================
-"let g:completion_enable_auto_popup = 0
-"imap <tab> <Plug>(completion_smart_tab)
-"imap <s-tab> <Plug>(completion_smart_s_tab)
-
-" nvim-autopairs ==============================================
-lua require('nvim-autopairs').setup{}
-
 " nvim-compe ==================================================
  let g:compe = {}
  let g:compe.enabled = v:true
@@ -325,11 +202,7 @@ nnoremap <F3> <cmd>Telescope live_grep<cr>
 "vim-which-key =============================================
 nnoremap <silent> <leader> :WhichKey '\'<CR>
 
-"Comment
-lua require'Comment'.setup{}
-
 "harpoon
-lua require'harpoon'.setup{}
 nnoremap <silent><leader>a :lua require("harpoon.mark").add_file()<CR>
 nnoremap <silent><C-t> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <silent><leader>1 :lua require("harpoon.ui").nav_file(1)<CR>
@@ -337,6 +210,18 @@ nnoremap <silent><leader>2 :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent><leader>3 :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent><leader>4 :lua require("harpoon.ui").nav_file(4)<CR>
 
-"jupyter-nvim
+"vim-devicons
+let g:webdevicons_enable_nerdtree = 1
 
-lua require'jupyter-nvim'.setup{}
+" press <Tab> to expand or jump in a snippet. These can also be mapped separately
+" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+" -1 for jumping backwards.
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+
+" For changing choices in choiceNodes (not strictly necessary for a basic setup).
+imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
