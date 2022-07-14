@@ -1,5 +1,8 @@
 local lspconfig = require'lspconfig'
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 lspconfig.tsserver.setup{
+  capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", "tsconfig.json", "jsconfig.json", ".git"),
 
   init_options = {
@@ -12,10 +15,20 @@ lspconfig.tsserver.setup{
   }
 }
 
-lspconfig.clangd.setup{}
-lspconfig.pyright.setup{}
-lspconfig.tailwindcss.setup{}
+
+lspconfig.clangd.setup{
+  capabilities = capabilities,
+}
+lspconfig.pyright.setup{
+
+  capabilities = capabilities,
+}
+lspconfig.tailwindcss.setup{
+
+  capabilities = capabilities,
+}
 require('flutter-tools').setup{
+  capabilities = capabilities,
   widget_guides = {
     enabled = true,
   }
@@ -46,6 +59,7 @@ require'lspconfig'.sumneko_lua.setup {
       telemetry = {
         enable = false,
       },
+      capabilities = capabilities
     },
   },
 }

@@ -1,9 +1,22 @@
 local ls = require'luasnip'
 
-ls.snippets = {
-  all = {
-    ls.parser.parse_snippet('ent','@Entity()\nexport class $1 extends BaseEntity {\n\t$0\n}'),
-    ls.parser.parse_snippet('col','@Column()\n$1: $2;'),
-  }
-}
+local S = ls.snippet
+local T = ls.text_node
+local I = ls.insert_node
 
+ls.add_snippets('typescript', {
+  S('ent', {
+    T({
+      'import { BaseEntity } from "src/utils/BaseEntity";',
+      'import { Entity, Column } from "typeorm";'}),
+      T({'','@Entity()'}),
+      T({'','export class '}), I(1), T({' extends BaseEntity {'}),
+      T({'', '  '}), I(0),
+      T({'', '}'})
+    }),
+
+    S('col', {
+      T({'@Column()', ''}),
+      I(1), T(': '), I(2), T({';', '', ''}), I(0)
+    })
+  })

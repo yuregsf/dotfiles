@@ -31,12 +31,17 @@ Plug 'akinsho/flutter-tools.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ahmedkhalf/jupyter-nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'hrsh7th/nvim-compe'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'dstein64/vim-startuptime'
 Plug 'lewis6991/impatient.nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'onsails/lspkind.nvim'
 call plug#end()
 
 lua require'impatient'.enable_profile()
@@ -44,7 +49,6 @@ lua require'yuregsf'
 
 
 " Basics ======================================================
-
 " autocmd
 autocmd FileType tex,md set spell
 autocmd FileType tex,md set spelllang=pt,en
@@ -53,7 +57,6 @@ let mapleader = " "
 
 filetype plugin on
 filetype indent plugin on
-
 syntax on
 
 set number relativenumber
@@ -64,7 +67,7 @@ set expandtab
 set nocompatible
 set nohlsearch
 set mouse=a
-set completeopt=menuone,noinsert,noselect
+set completeopt=menu,menuone,noinsert,noselect
 
 " Colorscheme
 set termguicolors
@@ -85,7 +88,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-L> <C-W><C-L>
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 nnoremap <leader>rr :source $MYVIMRC<CR>
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gc :Git commit<CR>
@@ -143,58 +145,27 @@ let g:user_emmet_settings = {
 \}
 
 " Remapping <C-E>, just doesn't cut it.
-  function! s:expand_html_tab()
-" try to determine if we're within quotes or tags.
-" if so, assume we're in an emmet fill area.
-   let line = getline('.')
-   if col('.') < len(line)
-     let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
-     if len(line) >= 2
-        return "\<C-n>"
-     endif
-   endif
-" expand anything emmet thinks is expandable.
-  if emmet#isExpandable()
-    return emmet#expandAbbrIntelligent("\<tab>")
-    " return "\<C-E>,"
-  endif
-" return a regular tab character
-  return "\<tab>"
-  endfunction
-
-autocmd FileType html,css,scss,typescriptreact,vue,javascript,markdown.mdx imap <silent><buffer><expr><tab> <sid>expand_html_tab()
-
-" nvim-compe ==================================================
- let g:compe = {}
- let g:compe.enabled = v:true
- let g:compe.autocomplete = v:true
- let g:compe.debug = v:false
- let g:compe.min_length = 1
- let g:compe.preselect = 'enable'
- let g:compe.throttle_time = 80
- let g:compe.source_timeout = 200
- let g:compe.incomplete_delay = 400
- let g:compe.max_abbr_width = 100
- let g:compe.max_kind_width = 100
- let g:compe.max_menu_width = 100
- let g:compe.documentation = v:true
-
- let g:compe.source = {}
- let g:compe.source.path = v:true
- let g:compe.source.buffer = v:true
- let g:compe.source.calc = v:true
- let g:compe.source.nvim_lsp = v:true
- let g:compe.source.nvim_lua = v:true
- let g:compe.source.vsnip = v:false
-
- inoremap <silent><expr> <C-Space> compe#complete()
- inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
- "inoremap <silent><expr> <C-e>     compe#close('<C-e>')
- inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
- inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
- inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
- inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
+"   function! s:expand_html_tab()
+" " try to determine if we're within quotes or tags.
+" " if so, assume we're in an emmet fill area.
+"    let line = getline('.')
+"    if col('.') < len(line)
+"      let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
+"      if len(line) >= 2
+"         return "\<C-n>"
+"      endif
+"    endif
+" " expand anything emmet thinks is expandable.
+"   if emmet#isExpandable()
+"     return emmet#expandAbbrIntelligent("\<tab>")
+"     " return "\<C-E>,"
+"   endif
+" " return a regular tab character
+"   return "\<tab>"
+"   endfunction
+"
+" autocmd FileType html,css,scss,typescriptreact,vue,javascript,markdown.mdx imap <silent><buffer><expr><tab> <sid>expand_html_tab()
+"
 "Telescope =================================================
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <F3> <cmd>Telescope live_grep<cr>
@@ -211,12 +182,12 @@ nnoremap <silent><leader>3 :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent><leader>4 :lua require("harpoon.ui").nav_file(4)<CR>
 
 "vim-devicons
-let g:webdevicons_enable_nerdtree = 1
+"let g:webdevicons_enable_nerdtree = 1
 
-" press <Tab> to expand or jump in a snippet. These can also be mapped separately
-" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
+"press <Tab> to expand or jump in a snippet. These can also be mapped separately
+"via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
-" -1 for jumping backwards.
+"-1 for jumping backwards.
 inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
 
 snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
