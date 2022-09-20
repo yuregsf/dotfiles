@@ -27,6 +27,8 @@ lspconfig.tailwindcss.setup{
 
   capabilities = capabilities,
 }
+require'lspconfig'.vuels.setup{}
+
 require('flutter-tools').setup{
   capabilities = capabilities,
   widget_guides = {

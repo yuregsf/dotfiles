@@ -18,5 +18,10 @@ ls.add_snippets('typescript', {
     S('col', {
       T({'@Column()', ''}),
       I(1), T(': '), I(2), T({';', '', ''}), I(0)
+    }),
+
+    S('api', {
+      T{'@ApiProperty('}, I(1), T{')', ''},
+      I(0)
     })
   })
