@@ -114,10 +114,10 @@ _G.packer_plugins = {
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
   },
-  ["flutter-tools.nvim"] = {
+  firenvim = {
     loaded = true,
-    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
-    url = "https://github.com/akinsho/flutter-tools.nvim"
+    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/firenvim",
+    url = "https://github.com/glacambre/firenvim"
   },
   gruvbox = {
     loaded = true,
@@ -138,11 +138,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
-  },
-  ["jupyter-nvim"] = {
-    loaded = true,
-    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/jupyter-nvim",
-    url = "https://github.com/ahmedkhalf/jupyter-nvim"
   },
   ["lspkind.nvim"] = {
     loaded = true,
@@ -188,6 +183,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

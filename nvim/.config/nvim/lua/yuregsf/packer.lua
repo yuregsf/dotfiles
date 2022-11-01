@@ -30,7 +30,7 @@ return require'packer'.startup(function(use)
   use  'hrsh7th/cmp-nvim-lua'
   use  'saadparwaiz1/cmp_luasnip'
   use  'L3MON4D3/LuaSnip'
-
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'PotatoesMaster/i3-vim-syntax'
   use 'gruvbox-community/gruvbox'
   use 'vimwiki/vimwiki'
@@ -48,6 +48,10 @@ return require'packer'.startup(function(use)
   use  'dstein64/vim-startuptime'
   use  'lewis6991/impatient.nvim'
   use  'onsails/lspkind.nvim'
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
 
   if packer_bootstrap then
     require('packer').sync()

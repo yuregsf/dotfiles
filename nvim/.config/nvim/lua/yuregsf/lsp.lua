@@ -1,5 +1,5 @@
 local lspconfig = require'lspconfig'
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lspconfig.tsserver.setup{
   capabilities = capabilities,
@@ -29,13 +29,6 @@ lspconfig.tailwindcss.setup{
 }
 require'lspconfig'.vuels.setup{}
 
-require('flutter-tools').setup{
-  capabilities = capabilities,
-  widget_guides = {
-    enabled = true,
-  }
-}
-
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
@@ -64,4 +57,11 @@ require'lspconfig'.sumneko_lua.setup {
       capabilities = capabilities
     },
   },
+}
+
+local pid = vim.fn.getpid()
+
+lspconfig.omnisharp.setup{
+    cmd = { "/usr/bin/omnisharp", "--languageserver", "--hostPID", tostring(pid) },
+    root_dir = lspconfig.util.root_pattern('*.sln', '*.csproj')
 }

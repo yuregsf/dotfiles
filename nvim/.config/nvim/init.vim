@@ -8,7 +8,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 filetype plugin on
 filetype indent plugin on
 syntax on
-
+"
 " Colorscheme
 colorscheme gruvbox
 
@@ -32,10 +32,10 @@ nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <leader>do :lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>f :lua vim.lsp.buf.formatting()<CR>
 vnoremap <silent> <leader>f :lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> gne :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> gpe :lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> gnp :lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> <leader>s :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent> gne :lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent> gpe :lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> gnp :lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <leader>s :lua vim.lsp.diagnostic.get_line_diagnostics()<CR>
 nnoremap <F2> :lua vim.lsp.buf.rename()<CR>
 
 
