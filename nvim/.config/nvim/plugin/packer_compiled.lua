@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
   },
-  firenvim = {
-    loaded = true,
-    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/firenvim",
-    url = "https://github.com/glacambre/firenvim"
-  },
   gruvbox = {
     loaded = true,
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/gruvbox",
@@ -144,11 +139,6 @@ _G.packer_plugins = {
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
     url = "https://github.com/onsails/lspkind.nvim"
   },
-  nerdtree = {
-    loaded = true,
-    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/nerdtree",
-    url = "https://github.com/scrooloose/nerdtree"
-  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -164,10 +154,20 @@ _G.packer_plugins = {
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -184,6 +184,11 @@ _G.packer_plugins = {
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["refactoring.nvim"] = {
+    loaded = true,
+    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
+    url = "https://github.com/ThePrimeagen/refactoring.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -193,11 +198,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/home/yuregsf/.local/share/nvim/site/pack/packer/start/vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
   },
   ["vim-fugitive"] = {
     loaded = true,

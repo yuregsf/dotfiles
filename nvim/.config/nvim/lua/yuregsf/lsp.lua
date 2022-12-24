@@ -62,6 +62,18 @@ require'lspconfig'.sumneko_lua.setup {
 local pid = vim.fn.getpid()
 
 lspconfig.omnisharp.setup{
-    cmd = { "/usr/bin/omnisharp", "--languageserver", "--hostPID", tostring(pid) },
+    cmd = { "mono","/home/yuregsf/Downloads/OmniSharp.exe", "--languageserver", "--hostPID", tostring(pid)},
     root_dir = lspconfig.util.root_pattern('*.sln', '*.csproj')
+}
+
+-- lspconfig.csharp_ls.setup{
+--   capabilities = capabilities,
+-- }
+
+lspconfig.html.setup {
+  capabilities = capabilities,
+}
+
+lspconfig.cssls.setup {
+  capabilities = capabilities,
 }

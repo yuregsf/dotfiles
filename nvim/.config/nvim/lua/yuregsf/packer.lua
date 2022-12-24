@@ -17,12 +17,12 @@ return require'packer'.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
-  use 'scrooloose/nerdtree'
   use  'neovim/nvim-lspconfig'
   use  'nvim-lua/plenary.nvim'
   use  'nvim-telescope/telescope.nvim'
   use  'numToStr/Comment.nvim'
   use  'ThePrimeagen/harpoon'
+  use  'ThePrimeagen/refactoring.nvim'
   use  'hrsh7th/nvim-cmp'
   use  'hrsh7th/cmp-nvim-lsp'
   use  'hrsh7th/cmp-buffer'
@@ -43,16 +43,16 @@ return require'packer'.startup(function(use)
   use  'windwp/nvim-autopairs'
   use  'nvim-treesitter/playground'
   use  'liuchengxu/vim-which-key'
-  use   'ryanoasis/vim-devicons'
   use  'tiagofumo/vim-nerdtree-syntax-highlight'
   use  'dstein64/vim-startuptime'
-  use  'lewis6991/impatient.nvim'
   use  'onsails/lspkind.nvim'
+  use  'lewis6991/impatient.nvim'
   use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    }
   }
-
   if packer_bootstrap then
     require('packer').sync()
   end

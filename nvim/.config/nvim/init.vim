@@ -13,8 +13,8 @@ syntax on
 colorscheme gruvbox
 
 " NERDTree ====================================================
-map <C-b> :NERDTreeToggle <CR>
-map <leader>b :NERDTreeFind<cr>
+map <C-b> :NvimTreeToggle <CR>
+map <leader>b :NvimTreeFindFileToggle<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
@@ -35,7 +35,7 @@ vnoremap <silent> <leader>f :lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> gne :lua vim.diagnostic.goto_next()<CR>
 nnoremap <silent> gpe :lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> gnp :lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> <leader>s :lua vim.lsp.diagnostic.get_line_diagnostics()<CR>
+nnoremap <silent> <leader>s :lua vim.diagnostic.open_float()<CR>
 nnoremap <F2> :lua vim.lsp.buf.rename()<CR>
 
 
