@@ -1,0 +1,19 @@
+#!/bin/bash
+
+main () {
+    set_up
+    echo "Press any key to shut down"
+    read -n1 -s -r
+    shut_down
+}
+
+set_up () {
+    sudo ln -f /etc/hosts_work /etc/hosts
+    tmux new-window -t 0:9 potato
+}
+
+shut_down () {
+    sudo ln -f /etc/hosts_free /etc/hosts
+}
+
+set_up

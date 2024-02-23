@@ -2,11 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/yuregsf/.oh-my-zsh"
-export PATH="$HOME/adb/platform-tools:$HOME/.local/bin:$PATH:/opt/lua-language-server/bin:$HOME/.dotnet/tools:/opt/miniconda3/bin"
+export PATH="$HOME/.dotnet:$HOME/adb/platform-tools:$HOME/.local/bin:$PATH:/opt/lua-language-server/bin:$HOME/.dotnet/tools:/opt/miniconda3/bin:/opt/rustdesk"
 export EDITOR=nvim
 export ANDROID_HOME="$HOME/Android/Sdk"
-
+export FIREFOX_PROFILE="$HOME/dev/fresh"
+#export NODE_OPTIONS=--openssl-legacy-provider
 export KEYTIMEOUT=1
+export GIT_EXTERNAL_DIFF=difft
 #Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -70,7 +72,7 @@ ZSH_THEME="typewritten"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-zstyle :omz:plugins:ssh-agent identities cloudmed_rsa id_rsa
+zstyle :omz:plugins:ssh-agent identities cloudmed_rsa id_rsa biodoc
 zstyle :omz:plugins:ssh-agent lazy yes
 
 plugins=(git fzf ssh-agent)
@@ -124,10 +126,15 @@ alias yt="pipe-viewer -ls"
 alias dev="cd ~/dev"
 alias pomodoro="potato"
 alias tomato="potato"
+alias firefox="firefox --profile $FIREFOX_PROFILE"
 slt()
 {
   streamlink --player mpv --default-stream best twitch.tv/"$1"
 }
+alias redshift="redshift -l -16:-49"
+alias open="xdg-open"
+alias postgres="sudo mkdir -p /run/postgresql && sudo chown -R postgres:postgres /run/postgresql && sudo -u postgres pg_ctl -D /var/lib/postgres/data -l /var/lib/postgres/arquivolog start"
+alias calc=bc
 
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
@@ -142,3 +149,13 @@ fi
 
 alias luamake=/home/yuregsf/Documentos/repos/lua-language-server/3rd/luamake/luamake
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+source /usr/share/nvm/init-nvm.sh
+
+# pnpm
+export PNPM_HOME="/home/yuregsf/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+eval "$(zoxide init --cmd cd zsh)"

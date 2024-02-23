@@ -10,7 +10,7 @@ filetype indent plugin on
 syntax on
 "
 " Colorscheme
-colorscheme gruvbox
+colorscheme moonfly
 
 " NERDTree ====================================================
 map <C-b> :NvimTreeToggle <CR>
@@ -59,9 +59,6 @@ let g:user_emmet_settings = {
 "Telescope =================================================
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <F3> <cmd>Telescope live_grep<cr>
-
-"vim-which-key =============================================
-nnoremap <silent> <leader> :WhichKey '\'<CR>
 
 "harpoon
 nnoremap <silent><leader>a :lua require("harpoon.mark").add_file()<CR>

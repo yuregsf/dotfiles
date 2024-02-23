@@ -41,8 +41,6 @@ return require'packer'.startup(function(use)
   use  'tpope/vim-fugitive'
   use  'tpope/vim-surround'
   use  'windwp/nvim-autopairs'
-  use  'nvim-treesitter/playground'
-  use  'liuchengxu/vim-which-key'
   use  'tiagofumo/vim-nerdtree-syntax-highlight'
   use  'dstein64/vim-startuptime'
   use  'onsails/lspkind.nvim'
@@ -53,6 +51,14 @@ return require'packer'.startup(function(use)
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     }
   }
+  use 'mfussenegger/nvim-dap'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'sbdchd/neoformat'
+  use 'nvim-treesitter/nvim-treesitter-context'
+  use 'bluz71/vim-moonfly-colors'
+  use 'owickstrom/vim-colors-paramount'
   if packer_bootstrap then
     require('packer').sync()
   end
