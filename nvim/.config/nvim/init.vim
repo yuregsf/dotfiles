@@ -30,8 +30,8 @@ nnoremap <silent> gi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
 nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <leader>do :lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent> <leader>f :lua vim.lsp.buf.formatting()<CR>
-vnoremap <silent> <leader>f :lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>f :lua vim.lsp.buf.format()<CR>
+vnoremap <silent> <leader>f :lua vim.lsp.buf.format()<CR>
 nnoremap <silent> gne :lua vim.diagnostic.goto_next()<CR>
 nnoremap <silent> gpe :lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> gnp :lua vim.diagnostic.goto_prev()<CR>
@@ -59,6 +59,8 @@ let g:user_emmet_settings = {
 "Telescope =================================================
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <F3> <cmd>Telescope live_grep<cr>
+nnoremap <leader>tr <cmd>Telescope resume<cr>
+nnoremap <leader>tt <cmd>Telescope treesitter<cr>
 
 "harpoon
 nnoremap <silent><leader>a :lua require("harpoon.mark").add_file()<CR>

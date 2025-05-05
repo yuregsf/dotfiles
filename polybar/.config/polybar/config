@@ -52,8 +52,8 @@ separator=|
 separator-foreground= ${colors.foreground-alt}
 
 modules-left = i3
-modules-center = mpd
-modules-right = pulseaudio memory cpu temperature eth date powermenu
+modules-center = 
+modules-right = pulseaudio xkeyboard memory cpu wireless-network battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -204,7 +204,7 @@ label = %percentage_used%%
 
 [module/wireless-network]
 type = internal/network
-interface = wlp0s20f0u7
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -391,12 +391,3 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
-
-; vim:ft=dosini
-
-[module/local-temperature]
-type = custom/script
-exec = ~/Documentos/myrice/scripts/temperature
-interval = 600
-format-prefix = "SBFZ: "
-format-prefix-foreground = ${colors.foreground-alt}

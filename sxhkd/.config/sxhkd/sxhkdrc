@@ -1,6 +1,6 @@
 #Auxiliar
 super+Return
-	st
+	alacritty
 super+d
 	dmenu_run
 super+b
@@ -26,19 +26,19 @@ super+shift+w
 super+shift+s
 	steam
 super+shift+f
-	st -e ranger
+	alacritty -e ranger
 super+shift+m
-	st -e ncmpcpp
+	alacritty -e ncmpcpp
 super+ctrl+m
-        st -e ranger /home/yuregsf/media/Mangás
+        alacritty -e ranger /home/yuregsf/media/Mangás
 super+shift+n
-	st -e newsboat
+	alacritty -e newsboat
 super+shift+t
 	telegram-desktop
 super+shift+z
 	zathura
 super+shift+v
-	st -e nvim -c VimwikiIndex
+	alacritty -e nvim -c VimwikiIndex
 #super+shift+p
 #	LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
 super+shift+p
@@ -46,9 +46,9 @@ super+shift+p
 super+shift+d
 	discord --no-sandbox
 super+x
-        st -e pulsemixer
+        alacritty -e pulsemixer
 super+c
-        st -e calcurse
+        alacritty -e calcurse
 super+shift+a
         anki
 super+shift+c
