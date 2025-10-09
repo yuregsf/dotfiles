@@ -1,13 +1,10 @@
-local lspconfig = require 'lspconfig'
-
-
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 
-lspconfig.ts_ls.setup {
+vim.lsp.config('ts_ls', {
   capabilities = capabilities,
   cmd = { "typescript-language-server", "--stdio" },
-  root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", "tsconfig.json", "jsconfig.json", ".git"),
+  root_markers = { "yarn.lock", "package.json", "tsconfig.json", "jsconfig.json", ".git" },
 
   init_options = {
     plugins = {
@@ -17,25 +14,26 @@ lspconfig.ts_ls.setup {
       }
     }
   }
-}
+})
 
 
-lspconfig.clangd.setup {
+vim.lsp.config('clangd', {
   capabilities = capabilities,
-}
-lspconfig.pyright.setup {
-  capabilities = capabilities,
-}
+})
 
-lspconfig.html.setup {
+vim.lsp.config('pyright', {
   capabilities = capabilities,
-}
+})
 
-lspconfig.cssls.setup {
+vim.lsp.config('html', {
   capabilities = capabilities,
-}
+})
 
-lspconfig.lua_ls.setup {
+vim.lsp.config('cssls', {
+  capabilities = capabilities,
+})
+
+vim.lsp.config('lua_ls', {
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -44,4 +42,4 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})

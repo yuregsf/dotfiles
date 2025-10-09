@@ -23,12 +23,6 @@ return require 'packer'.startup(function(use)
   use 'numToStr/Comment.nvim'
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/refactoring.nvim'
-  -- use 'hrsh7th/nvim-cmp'
-  -- use 'hrsh7th/cmp-nvim-lsp'
-  -- use 'hrsh7th/cmp-buffer'
-  -- use 'hrsh7th/cmp-path'
-  -- use 'hrsh7th/cmp-nvim-lua'
-  -- use 'saadparwaiz1/cmp_luasnip'
   use { 'saghen/blink.cmp', tag = 'v1.*' }
   use 'L3MON4D3/LuaSnip'
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }

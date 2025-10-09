@@ -34,9 +34,9 @@ super+ctrl+m
 super+shift+n
 	alacritty -e newsboat
 super+shift+t
-	telegram-desktop
+	Telegram
 super+shift+z
-	zathura
+	google-chrome-stable https://web.whatsapp.com
 super+shift+v
 	alacritty -e nvim -c VimwikiIndex
 #super+shift+p
@@ -72,3 +72,9 @@ super+m
 #	changeaudio headphone
 super+p
 	mpc toggle
+
+XF86MonBrightnessUp
+  echo $[$(cat /sys/class/backlight/amdgpu_bl1/brightness)+10] | tee /sys/class/backlight/amdgpu_bl1/brightness
+
+XF86MonBrightnessDown
+  echo $[$(cat /sys/class/backlight/amdgpu_bl1/brightness)-10] | tee /sys/class/backlight/amdgpu_bl1/brightness

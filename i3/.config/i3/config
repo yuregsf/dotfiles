@@ -19,6 +19,7 @@ exec --no-startup-id dunst
 exec --no-startup-id fcitx5
 exec --no-startup-id firefox
 exec --no-startup-id spotify
+exec_always --no-startup-id nm-applet --no-agent
 exec calcurse -d today | xargs -0 notify-send "Today events"
 exec --no-startup-id $HOME/Documentos/myrice/scripts/sendmsg.sh "$(calcurse -d yesterday)"
 exec --no-startup-id kwalletd5
@@ -69,7 +70,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+v split toggle
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Ctrl+f  floating toggle
 
 # toggle sticky window
 bindsym $mod+s sticky toggle
@@ -148,8 +149,7 @@ client.background       #ffffff
 
 # Application specific
 for_window [instance="origin.exe"] floating enable
-for_window [class="Spotify"] move container to workspace 3
-for_window [instance="telegram-desktop" class="TelegramDesktop"] floating enable
+for_window [class="Spotify"] move container to workspace 8
 #for_window [instance="discord" class="discord"] floating enable
 for_window [instance="awakened-poe-trade" class="awakened-poe-trade"] floating enable
 for_window [instance="pathofexile_x64.exe" class="pathofexile_x64.exe"] floating enable
@@ -157,3 +157,4 @@ for_window [title="pulsemixer"] floating enable
 for_window [class="Anki"] floating enable
 for_window [class="lxqt-openssh-askpass"] floating enable
 for_window [class="Yad"] floating enable
+for_window [instance="rdesktop"] floating enable
