@@ -15,7 +15,8 @@ return require 'packer'.startup(function(use)
   use 'wbthomason/packer.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    run = ':TSUpdate',
+    branch = 'main'
   }
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/plenary.nvim'

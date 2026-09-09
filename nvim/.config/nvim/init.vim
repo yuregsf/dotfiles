@@ -32,9 +32,9 @@ nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <leader>do :lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>f :lua vim.lsp.buf.format()<CR>
 vnoremap <silent> <leader>f :lua vim.lsp.buf.format()<CR>
-nnoremap <silent> gne :lua vim.diagnostic.goto_next()<CR>
-nnoremap <silent> gpe :lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> gnp :lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> gne :lua vim.diagnostic.jump({count=1, float=true})<CR>
+nnoremap <silent> gpe :lua vim.diagnostic.jump({count=-1, float=true})<CR>
+nnoremap <silent> gnp :lua vim.diagnostic.jump({count=-1, float=true})<CR>
 nnoremap <silent> <leader>s :lua vim.diagnostic.open_float()<CR>
 nnoremap <F2> :lua vim.lsp.buf.rename()<CR>
 
@@ -69,3 +69,4 @@ nnoremap <silent><leader>1 :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <silent><leader>2 :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent><leader>3 :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent><leader>4 :lua require("harpoon.ui").nav_file(4)<CR>
+set mouse=
